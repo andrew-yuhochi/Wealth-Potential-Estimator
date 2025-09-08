@@ -3,7 +3,6 @@
 
 This is a application that estimates an individual's potential net worth by recognizing their face and comparing it to a dataset of well-known, high-net-worth individuals. The application leverages a pre-trained Vision Transformer model to extract a unique "face embedding" and then uses cosine similarity to find the most similar matches in a mock database. The final net worth is estimated based on the average net worth of the top matches.
 
-
 ## Architectural Decisions
 
 
@@ -57,3 +56,47 @@ Make sure you have Docker installed and running on your system. Navigate to your
 Once the image is built, run the following command to start the application. The ```-p 7860:7860``` flag maps the container's internal port to your local machine, allowing you to access the Gradio interface.
 
 ```docker run -p 7860:7860 wealth-estimator:1.0```
+
+## How to Use the Application
+
+Using the Wealth Potential Estimator is simple and straightforward.
+
+Upload Your Image: In the "Upload an image" box on the left, you can either click the upload icon to select an image from your computer or drag and drop an image file directly into the box. You aslo also take and upload a new picture with your camera. 
+
+Submit Your Request: Once your image appears in the preview pane, click the orange "Submit" button. The application will process your image and run the estimation.
+
+View Your Results: On the right-hand side, two key pieces of information will be displayed:
+
+Estimated Net Worth: A dollar value representing your estimated net worth based on your top celebrity matches.
+
+Top Celebrity Matches: A gallery of the three celebrities from our mock dataset who have the most similar facial features to your own. You can further click into eacah of them to understand more about the celebrity's name and a similarity score.
+
+## File Contents
+
+```Dockerfile```
+
+This file contains the instructions for building the Docker image.
+
+```requirements.txt```
+
+This file lists the Python packages and their versions required by the application.
+
+```app.py```
+
+This is the main script that defines the Gradio interface and orchestrates the application logic.
+
+```config.py```
+
+This file holds all the application's configurable settings, such as model paths and data file locations.
+
+```data_generation.py```
+
+This script is responsible for creating the mock dataset, including generating and storing the embeddings.
+
+```embedding_service.py```
+
+This file contains the core logic for loading the Vision Transformer model and generating a numerical embedding from an image.
+
+```similarity_search.py```
+
+This script contains the logic for loading the dataset and performing a vectorized cosine similarity search.
