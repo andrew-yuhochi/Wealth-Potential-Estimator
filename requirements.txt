@@ -1,0 +1,5 @@
+tensorflow == 2.19.0
+transformers == 4.56.0
+gradio == 5.44.1
+numpy == 2.0.2
+Pillow == 11.3.0
